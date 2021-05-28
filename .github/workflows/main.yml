@@ -37,4 +37,29 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Cli Installer Windows
-        path: deploy/setup
+        path: deploy/setup/cliSetup.exe
+
+  build-Linux:
+
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyinstaller
+          python -m pip install -r requirements.txt
+      - name: Build with PyInstaller
+        run: |
+          pyinstaller deploy/cli-onefile.spec
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Cli Executable Ubuntu 20.04
+          path: dist/
