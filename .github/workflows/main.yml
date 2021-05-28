@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-Windows:
 
     runs-on: windows-latest
     strategy:
@@ -30,3 +30,10 @@ jobs:
     - name: Build with PyInstaller
       run: |
         pyinstaller deploy/cli.spec
+    - name: Building installer
+        run: |
+          "%programfiles(x86)%\Inno Setup 6\iscc.exe" "deploy/Installer.iss"
+    - uses: actions/upload-artifact@v2
+        with:
+          name: Cli Installer Windows
+          path: deploy/setup
