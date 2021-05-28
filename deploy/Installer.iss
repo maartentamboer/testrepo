@@ -7,14 +7,14 @@
 
 [Setup]
 AppPublisher={#Publisher}
-AppName=voyager
-AppId=voyager_{#Release}
+AppName=cli
+AppId=cli{#Release}
 AppVersion={#Release}
 WizardStyle=modern
-DefaultDirName={localappdata}\MaartenTamboer\voyager\
-DefaultGroupName={#Publisher}\voyager
+DefaultDirName={localappdata}\MaartenTamboer\cli\
+DefaultGroupName={#Publisher}\cli
 UninstallDisplayIcon=.\icon_black.ico
-UninstallDisplayName=voyager {#Release}
+UninstallDisplayName=cli {#Release}
 Compression=lzma2
 SolidCompression=yes
 OutputDir=.\setup
