@@ -36,7 +36,7 @@ jobs:
       shell: cmd
     - uses: actions/upload-artifact@v2
       with:
-        name: Cli Installer Windows
+        name: Cli-Installer-Windows
         path: deploy/setup/cliSetup.exe
 
   build-Linux:
@@ -61,7 +61,7 @@ jobs:
           pyinstaller deploy/cli-onefile.spec
       - uses: actions/upload-artifact@v2
         with:
-          name: Cli Executable Ubuntu 20.04
+          name: Cli-Executable-Ubuntu-20.04
           path: dist/
 
   release:
@@ -76,7 +76,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            Release.txt
-            LICENSE
+            Cli-Executable-Ubuntu-20.04/cli
+            Cli-Installer-Windows/cliSetup.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
